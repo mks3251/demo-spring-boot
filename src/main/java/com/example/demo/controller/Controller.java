@@ -1,31 +1,31 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.MongoDoc;
-import com.example.demo.repository.DemoRepository;
+import com.example.demo.model.Cat;
+import com.example.demo.repository.CatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/echo")
+@RequestMapping(value = "/cats")
 public class Controller {
 
     @Autowired
-    DemoRepository demoRepository;
+    CatRepository catRepository;
 
     @PostMapping()
-    public MongoDoc postMongoDoc(@RequestBody MongoDoc mongoDoc){
+    public Cat createCats(@RequestBody Cat cat){
 
-        demoRepository.save(mongoDoc);
+        catRepository.save(cat);
 
-        return mongoDoc;
+        return cat;
 
     }
 
     @GetMapping
-    public List<MongoDoc> getAllMongoDocs(){
-        return demoRepository.findAll();
+    public List<Cat> getAllCats(){
+        return catRepository.findAll();
     }
 
 
